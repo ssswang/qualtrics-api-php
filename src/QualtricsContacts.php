@@ -103,7 +103,7 @@ class QualtricsContacts extends Qualtrics {
    *
    * @see https://api.qualtrics.com/docs/create-recipient-contact
    */
-  public function addContact($list_id, $email, $parameters = [], $batch = FALSE) {
+  public function addContact($list_id, $email, $parameters = []) {
     $tokens = [
       'mailingListId' => $list_id,
     ];
@@ -112,7 +112,7 @@ class QualtricsContacts extends Qualtrics {
       'email' => $email,
     ];
 
-    return $this->request('POST', '/mailinglists/{mailingListId}/contacts', $tokens, $parameters, $batch);
+    return $this->request('POST', '/mailinglists/{mailingListId}/contacts', $tokens, $parameters);
   }
 
   /**
@@ -152,13 +152,13 @@ class QualtricsContacts extends Qualtrics {
    *
    * @see https://api.qualtrics.com/docs/update-contact
    */
-  public function updateContact($list_id, $contact_id, $parameters = [], $batch = FALSE) {
+  public function updateContact($list_id, $contact_id, $parameters = []) {
     $tokens = [
       'mailingListId' => $list_id,
       'contactId' => $contact_id,
     ];
 
-    return $this->request('PUT', '/mailinglists/{mailingListId}/contacts/{contactId}', $tokens, $parameters, $batch);
+    return $this->request('PUT', '/mailinglists/{mailingListId}/contacts/{contactId}', $tokens, $parameters);
   }
 
 

@@ -125,28 +125,21 @@ class Qualtrics {
    *   Associative array of tokens and values to replace in the path.
    * @param array $parameters
    *   Associative array of parameters to send in the request body.
-   * @param bool $batch
-   *   TRUE if this request should be added to pending batch operations.
    *
    * @return object
    *
    * @throws QualtricsAPIException
    */
-  protected function request($method, $path, $tokens = NULL, $parameters = NULL, $batch = FALSE) {
+  protected function request($method, $path, $tokens = NULL, $parameters = NULL) {
     if (!empty($tokens)) {
       foreach ($tokens as $key => $value) {
         $path = str_replace('{' . $key . '}', $value, $path);
       }
     }
 
-    // if ($batch) {
-    //   return $this->addBatchOperation($method, $path, $parameters);
-    // }
-
     // Set default request options with auth header.
     $options = [
       'headers' => [
-        //'Authorization' => $this->api_user . ' ' . $this->api_key,
         'X-API-TOKEN' => $this->api_key,
       ],
     ];

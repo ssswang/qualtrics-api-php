@@ -13,12 +13,14 @@ class QualtricsAPIException extends Exception {
     // Construct message from JSON if required.
     if (substr($message, 0, 1) == '{') {
       $message_obj = json_decode($message);
-      $message = $message_obj->status . ': ' . $message_obj->title . ' - ' . $message_obj->detail;
-      if (!empty($message_obj->errors)) {
-        $message .= ' ' . serialize($message_obj->errors);
+      $http_status = $message_obj->meta->httpStatus;
+      $error_message = $message_obj->meta->error->errorMessage;
+      $error_code = $message_obj->meta->error->errorCode;
+      $message = $http_status . ': ' . $error_message . ' - ' . $error_code;
+      if (!empty($message_obj->meta->error)) {
+        $message .= ' ' . serialize($message_obj->meta->error);
       }
     }
-
     parent::__construct($message, $code, $previous);
   }
 

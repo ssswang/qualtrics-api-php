@@ -4,10 +4,8 @@ namespace Qualtrics;
 
 class QualtricsContacts extends Qualtrics {
 
-  const MEMBER_STATUS_SUBSCRIBED = 'subscribed';
-  const MEMBER_STATUS_UNSUBSCRIBED = 'unsubscribed';
-  const MEMBER_STATUS_CLEANED = 'cleaned';
-  const MEMBER_STATUS_PENDING = 'pending';
+  //const MEMBER_STATUS_SUBSCRIBED = 'subscribed';
+  //const MEMBER_STATUS_UNSUBSCRIBED = 'unsubscribed';
 
   /**
    * Gets information about all lists owned by the authenticated account.

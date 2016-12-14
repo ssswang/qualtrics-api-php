@@ -4,6 +4,17 @@ namespace Qualtrics;
 
 class QualtricsLibraries extends Qualtrics {
 
+  const LIBRARY_CATEGORY_INVITE = 'invite';
+  const LIBRARY_CATEGORY_INACTIVESURVEY = 'inactiveSurvey';
+  const LIBRARY_CATEGORY_REMINDER = 'reminder';
+  const LIBRARY_CATEGORY_THANKYOU = 'thankYou';
+  const LIBRARY_CATEGORY_ENDOFSURVEY = 'endOfSurvey';
+  const LIBRARY_CATEGORY_GENERAL = 'general';
+  const LIBRARY_CATEGORY_LOOKANDFEEL = 'lookAndFeel';
+  const LIBRARY_CATEGORY_EMAILSUBJECT = 'emailSubject';
+  const LIBRARY_CATEGORY_SMSINVITE = 'smsInvite';
+
+
   /**
    * Gets a report summary for the authenticated account.
    * @param string $library_id

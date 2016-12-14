@@ -4,14 +4,9 @@ namespace Qualtrics;
 
 class QualtricsDistributions extends Qualtrics {
 
-  const EMAIL_TYPE_HTML = 'html';
-  const EMAIL_TYPE_PLAIN_TEXT = 'plain_text';
-
-  const CAMPAIGN_TYPE_REGULAR = 'regular';
-  const CAMPAIGN_TYPE_PLAINTEXT = 'plaintext';
-  const CAMPAIGN_TYPE_ABSPLIT = 'absplit';
-  const CAMPAIGN_TYPE_RSS = 'rss';
-  const CAMPAIGN_TYPE_VARIATE = 'variate';
+  const DISTRO_LINK_TYPE_INDIVIDUAL = 'Individual';
+  const DISTRO_LINK_TYPE_MULTIPLE = 'Multiple';
+  const DISTRO_LINK_TYPE_ANONYMOUS = 'Anonymous';
 
   /**
    * Gets information about all distributions related to a survey.
@@ -111,7 +106,7 @@ class QualtricsDistributions extends Qualtrics {
    * @see https://api.qualtrics.com/docs/create-survey-distribution
    */
   public function addSurveyDistribution($survey_link, $header, $message, $recipients, $send_date) {
-    $parameters += [
+    $parameters = [
       'surveyLink' => $survey_link,
       'header' => $header,
       'message' => $message,
@@ -119,7 +114,7 @@ class QualtricsDistributions extends Qualtrics {
       'sendDate' => $send_date,
     ];
 
-    return $this->request('POST', '/campaigns', NULL, $parameters);
+    return $this->request('POST', '/distributions', NULL, $parameters);
   }
 
   /**
@@ -133,6 +128,8 @@ class QualtricsDistributions extends Qualtrics {
    * @see https://api.qualtrics.com/docs/generate-distribution-invite
    */
   public function generateDistributionLinks($parameters) {
+    $parameters['action'] = 'CreateDistribution';
+
     return $this->request('POST', '/distributions/', NULL, $parameters);
   }
 
@@ -149,75 +146,6 @@ class QualtricsDistributions extends Qualtrics {
    */
   public function sendEmailToList($parameters) {
     return $this->request('POST', '/distributions/', NULL, $parameters);
-  }
-
-  /**
-   * Sends a test email.
-   *
-   * @param string $campaign_id
-   *   The ID of the campaign.
-   * @param array $test_emails
-   *   Email addresses to send the test email to.
-   * @param string $send_type
-   *   The type of test email to send.
-   * @param array $parameters
-   *   Associative array of optional request parameters.
-   * @param bool $batch
-   *   TRUE to create a new pending batch operation.
-   *
-   * @return object
-   *
-   * @see http://developer.mailchimp.com/documentation/mailchimp/reference/campaigns/#action-post_campaigns_campaign_id_actions_test
-   */
-  public function sendTest($campaign_id, $test_emails, $send_type, $parameters = [], $batch = FALSE) {
-    $tokens = [
-      'campaign_id' => $campaign_id,
-    ];
-
-    $parameters += [
-      'test_emails' => $test_emails,
-      'send_type' => $send_type,
-    ];
-
-    return $this->request('POST', '/campaigns/{campaign_id}/actions/test', $tokens, $parameters, $batch);
-  }
-
-  /**
-   * Send a MailChimp campaign.
-   *
-   * @param string $campaign_id
-   *   The ID of the campaign.
-   * @param bool $batch
-   *   TRUE to create a new pending batch operation.
-   *
-   * @return object
-   *
-   * @see http://developer.mailchimp.com/documentation/mailchimp/reference/campaigns/#action-post_campaigns_campaign_id_actions_send
-   */
-  public function send($campaign_id, $batch = FALSE) {
-    $tokens = [
-      'campaign_id' => $campaign_id,
-    ];
-
-    return $this->request('POST', '/campaigns/{campaign_id}/actions/send', $tokens, NULL, $batch);
-  }
-
-  /**
-   * Deletes a Qualtrics campaign.
-   *
-   * @param string $campaign_id
-   *   The ID of the campaign.
-   *
-   * @return object
-   *
-   * @see http://developer.mailchimp.com/documentation/mailchimp/reference/campaigns/#delete-delete_campaigns_campaign_id
-   */
-  public function delete($campaign_id) {
-    $tokens = [
-      'campaign_id' => $campaign_id,
-    ];
-
-    return $this->request('DELETE', '/campaigns/{campaign_id}', $tokens);
   }
 
 }

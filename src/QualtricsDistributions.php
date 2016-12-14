@@ -98,8 +98,6 @@ class QualtricsDistributions extends Qualtrics {
    *   contains mailingListId.
    * @param string $send_date
    *   Time to send the email.
-   * @param array $parameters
-   *   Associative array of optional request parameters.
    *
    * @return object
    *

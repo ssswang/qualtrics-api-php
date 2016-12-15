@@ -20,7 +20,7 @@ class QualtricsTest extends \PHPUnit_Framework_TestCase {
    */
   public function testVersion() {
     $qt = new Qualtrics();
-    $this->assertEquals($qt::VERSION, '0.1-alpha');
+    $this->assertEquals($qt::VERSION, '1.0.0-alpha');
     $this->assertEquals(json_decode(file_get_contents('composer.json'))->version, $qt::VERSION);
   }
 }

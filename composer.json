@@ -1,6 +1,6 @@
 {
   "name": "UI-Research/qualtrics-api-php",
-  "version": "0.1-alpha",
+  "version": "1.0.0-alpha",
   "type": "library",
   "description": "PHP library for v3 of the Qualtrics API",
   "keywords": ["qualtrics", "survey"],

@@ -1,9 +1,3 @@
-<?php
-
-namespace Qualtrics;
-
-class QualtricsResponses extends Qualtrics {
-
   /**
    * Gets a report summary for the authenticated account.
    *
@@ -12,30 +6,15 @@ class QualtricsResponses extends Qualtrics {
    *
    * @return object
    *
-   * @see http://developer.mailchimp.com/documentation/mailchimp/reference/reports/#read-get_reports
+   * @see https://api.qualtrics.com/reference#create-response-export-new
    */
-  public function getSummary($parameters = []) {
-    return $this->request('GET', '/reports', NULL, $parameters);
-  }
-
-  /**
-   * Gets a report summary for a specific campaign.
-   *
-   * @param string $campaign_id
-   *   The ID of the campaign.
-   * @param array $parameters
-   *   Associative array of optional request parameters.
-   *
-   * @return object
-   *
-   * @see http://developer.mailchimp.com/documentation/mailchimp/reference/reports/#read-get_reports_campaign_id
-   */
-  public function getCampaignSummary($campaign_id, $parameters = []) {
-    $tokens = [
-      'campaign_id' => $campaign_id,
-    ];
-
-    return $this->request('GET', '/reports/{campaign_id}', $tokens, $parameters);
-  }
-
-}
+    public function createResponseExport($id, $progressId, $parameters = ["format" => "csv"]) {
+        return $this->request('POST', '/surveys/'.$id."/export-responses", NULL, $parameters);
+    }
+    
+    public function createResponseExportProgress($id, $progressId) {
+        return $this->request('POST', '/surveys/'.$id."/export-responses/".$progressId);
+    }
+    public function getResponseExportFile($id, $fileId) {
+        return $this->request('GET', '/surveys/'.$id."/export-responses/".$fileId."/file");
+    }

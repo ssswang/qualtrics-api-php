@@ -1,16 +1,16 @@
 {
-  "name": "UI-Research/qualtrics-api-php",
-  "version": "1.0.0-alpha",
+  "name": "ssswang/qualtrics-api-php",
+  "version": "1.0.0",
   "type": "library",
   "description": "PHP library for v3 of the Qualtrics API",
   "keywords": ["qualtrics", "survey"],
   "homepage": "https://github.com/UI-Research/qualtrics-api-php",
   "require": {
     "php": ">=5.5.0",
-    "guzzlehttp/guzzle": "6.2.1"
+    "guzzlehttp/guzzle": "^6.4"
   },
   "require-dev": {
-    "phpunit/phpunit": "4.8.21"
+    "phpunit/phpunit": "^4.8"
   },
   "autoload": {
     "psr-4": {

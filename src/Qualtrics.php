@@ -7,8 +7,7 @@ use GuzzleHttp\Exception\RequestException;
 
 class Qualtrics {
 
-  const VERSION = '0.1-alpha';
-  const DEFAULT_DATA_CENTER = 'co1';
+  const DEFAULT_DATA_CENTER = 'ca1';
 
   const ERROR_CODE_BAD_REQUEST = 'BadRequest';
   const ERROR_CODE_INVALID_ACTION = 'InvalidAction';
@@ -28,11 +27,7 @@ class Qualtrics {
   const ERROR_CODE_INTERNAL_SERVER_ERROR = 'InternalServerError';
   const ERROR_CODE_COMPLIANCE_RELATED = 'ComplianceRelated';
 
-  /**
-   * API version.
-   * @var string
-   */
-  public $version = self::VERSION;
+
 
   /**
    * @var Client $client
@@ -44,7 +39,7 @@ class Qualtrics {
    * @var string $endpoint
    *   The REST API endpoint.
    */
-  protected $endpoint = 'https://co1.qualtrics.com/API/v3';
+  protected $endpoint = 'https://ca1.qualtrics.com/API/v3';
 
   /**
    * @var string $api_key

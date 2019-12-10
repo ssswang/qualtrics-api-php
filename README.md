@@ -5,7 +5,7 @@ The API is [documented here](https://api.qualtrics.com).
 
 ## Requirements
 
-- PHP 5.5.0 or greater
+- PHP 5.6
 - [Composer](https://getcomposer.org/)
 - [Guzzle](https://github.com/guzzle/guzzle)
 
